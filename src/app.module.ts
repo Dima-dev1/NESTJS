@@ -4,7 +4,7 @@ import { PrismaModule } from './prisma/prisma.module.js';
 import { ConfigModule } from '@nestjs/config';
 import { RecipesModule } from './recipes/recipes.module.js';
 import { UserModule } from './users/users.module.js';
-// import { CommentsModule } from './comments/comments.module';
+import { CommentsModule } from './comments/comments.module.js';
 
 @Module({
   imports: [
@@ -15,7 +15,7 @@ import { UserModule } from './users/users.module.js';
     // TodoModule,
     RecipesModule,
     UserModule,
-    // CommentsModule,
+    CommentsModule,
   ],
 })
 export class AppModule {}
