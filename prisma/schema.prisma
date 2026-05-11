@@ -16,10 +16,31 @@ model Todo {
 }
 
 model Recipe {
-  id          Int      @id @default(autoincrement())
+  id          Int        @id @default(autoincrement())
   title       String
   description String
   rating      Int
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  comments    Comments[]
+}
+
+model User {
+  id        Int        @id @default(autoincrement())
+  fullName  String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  comments  Comments[]
+}
+
+model Comments {
+  id        Int      @id @default(autoincrement())
+  text      String
+  rating    Int
+  userId    Int
+  recipeId  Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  recipe    Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
